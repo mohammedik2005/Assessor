@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Domain.
+    -->
+    <changeSet id="20180416073425-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="domains_id"
+                                 baseTableName="domain_attachments"
+                                 constraintName="fk_domain_attachments_domains_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="domain"/>
+        <addForeignKeyConstraint baseColumnNames="attachments_id"
+                                 baseTableName="domain_attachments"
+                                 constraintName="fk_domain_attachments_attachments_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="attachment"/>
+        
+        <addForeignKeyConstraint baseColumnNames="principle_id"
+                                 baseTableName="domain"
+                                 constraintName="fk_domain_principle_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="principles"/>
+
+        <addForeignKeyConstraint baseColumnNames="control_id"
+                                 baseTableName="domain"
+                                 constraintName="fk_domain_control_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="control"/>
+
+    </changeSet>
+</databaseChangeLog>

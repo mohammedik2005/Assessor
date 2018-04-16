@@ -1,0 +1,86 @@
+<div>
+    <h2>
+        <span jhiTranslate="assessorApp.attachment.home.title">Attachments</span>
+        <button class="btn btn-primary float-right jh-create-entity create-attachment-assess" [routerLink]="['/', { outlets: { popup: ['attachment-assess-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="assessorApp.attachment.home.createLabel">
+            Create new Attachment
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="attachments">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="description"><span jhiTranslate="assessorApp.attachment.description">Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="extension"><span jhiTranslate="assessorApp.attachment.extension">Extension</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="generatedName"><span jhiTranslate="assessorApp.attachment.generatedName">Generated Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="isActive"><span jhiTranslate="assessorApp.attachment.isActive">Is Active</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="mimeType"><span jhiTranslate="assessorApp.attachment.mimeType">Mime Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="originalName"><span jhiTranslate="assessorApp.attachment.originalName">Original Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tableName"><span jhiTranslate="assessorApp.attachment.tableName">Table Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="assessorApp.attachment.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="assessorApp.attachment.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="modifiedDate"><span jhiTranslate="assessorApp.attachment.modifiedDate">Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="modifiedBy"><span jhiTranslate="assessorApp.attachment.modifiedBy">Modified By</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let attachment of attachments ;trackBy: trackId">
+                <td><a [routerLink]="['../attachment-assess', attachment.id ]">{{attachment.id}}</a></td>
+                <td>{{attachment.description}}</td>
+                <td>{{attachment.extension}}</td>
+                <td>{{attachment.generatedName}}</td>
+                <td>{{attachment.isActive}}</td>
+                <td>{{attachment.mimeType}}</td>
+                <td>{{attachment.originalName}}</td>
+                <td>{{attachment.tableName}}</td>
+                <td>{{attachment.createdDate | date:'medium'}}</td>
+                <td>{{attachment.createdBy}}</td>
+                <td>{{attachment.modifiedDate | date:'medium'}}</td>
+                <td>{{attachment.modifiedBy}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../attachment-assess', attachment.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'attachment-assess/'+ attachment.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'attachment-assess/'+ attachment.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="attachments && attachments.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

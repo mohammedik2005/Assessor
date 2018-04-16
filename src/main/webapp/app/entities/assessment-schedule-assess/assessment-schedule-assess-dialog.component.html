@@ -1,0 +1,79 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAssessmentScheduleLabel" jhiTranslate="assessorApp.assessmentSchedule.home.createOrEditLabel">Create or edit a Assessment Schedule</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!assessmentSchedule.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="assessmentSchedule.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.assessmentSchedule.fromDate" for="field_fromDate">From Date</label>
+            <div class="d-flex">
+                <input id="field_fromDate" type="datetime-local" class="form-control" name="fromDate" [(ngModel)]="assessmentSchedule.fromDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.assessmentSchedule.toDate" for="field_toDate">To Date</label>
+            <div class="d-flex">
+                <input id="field_toDate" type="datetime-local" class="form-control" name="toDate" [(ngModel)]="assessmentSchedule.toDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.assessmentSchedule.descriptionAr" for="field_descriptionAr">Description Ar</label>
+            <input type="text" class="form-control" name="descriptionAr" id="field_descriptionAr"
+                [(ngModel)]="assessmentSchedule.descriptionAr" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.assessmentSchedule.descriptionEn" for="field_descriptionEn">Description En</label>
+            <input type="text" class="form-control" name="descriptionEn" id="field_descriptionEn"
+                [(ngModel)]="assessmentSchedule.descriptionEn" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.assessmentSchedule.createdDate" for="field_createdDate">Created Date</label>
+            <div class="d-flex">
+                <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="assessmentSchedule.createdDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.assessmentSchedule.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="assessmentSchedule.createdBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.assessmentSchedule.modifiedDate" for="field_modifiedDate">Modified Date</label>
+            <div class="d-flex">
+                <input id="field_modifiedDate" type="datetime-local" class="form-control" name="modifiedDate" [(ngModel)]="assessmentSchedule.modifiedDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.assessmentSchedule.modifiedBy" for="field_modifiedBy">Modified By</label>
+            <input type="text" class="form-control" name="modifiedBy" id="field_modifiedBy"
+                [(ngModel)]="assessmentSchedule.modifiedBy" />
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="assessorApp.assessmentSchedule.schedules" for="field_schedules">Schedules</label>
+            <select class="form-control" id="field_schedules" multiple name="schedules" [(ngModel)]="assessmentSchedule.schedules">
+                <option [ngValue]="getSelected(assessmentSchedule.schedules, complianceScheduleOption)" *ngFor="let complianceScheduleOption of complianceschedules; trackBy: trackComplianceScheduleById">{{complianceScheduleOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

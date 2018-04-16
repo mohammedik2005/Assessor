@@ -1,0 +1,37 @@
+
+{
+    "assessorApp": {
+        "complianceValues" : {
+            "home": {
+                "title": "Compliance Values",
+                "createLabel": "Create a new Compliance Values",
+                "createOrEditLabel": "Create or edit a Compliance Values"
+            },
+            "created": "A new Compliance Values is created with identifier {{ param }}",
+            "updated": "A Compliance Values is updated with identifier {{ param }}",
+            "deleted": "A Compliance Values is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Compliance Values {{ id }}?"
+            },
+            "detail": {
+                "title": "Compliance Values"
+            },
+            "ownership": "Ownership",
+            "justification": "Justification",
+            "isCompleted": "Is Completed",
+            "evidenceName": "Evidence Name",
+            "createdDate": "Created Date",
+            "createdBy": "Created By",
+            "modifiedDate": "Modified Date",
+            "modifiedBy": "Modified By",
+            "attachments": "Attachments",
+            "complianceStatus": "Compliance Status",
+            "complianceSchedule": "Compliance Schedule",
+            "evidenceType": "Evidence Type",
+            "evidenceStatus": "Evidence Status",
+            "applicants": "Applicants",
+            "compliance": "Compliance",
+            "notes": "Notes"
+        }
+    }
+}

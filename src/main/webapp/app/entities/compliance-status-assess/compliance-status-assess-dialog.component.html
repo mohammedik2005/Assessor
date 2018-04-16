@@ -1,0 +1,71 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myComplianceStatusLabel" jhiTranslate="assessorApp.complianceStatus.home.createOrEditLabel">Create or edit a Compliance Status</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!complianceStatus.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="complianceStatus.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.complianceStatus.statusAr" for="field_statusAr">Status Ar</label>
+            <input type="text" class="form-control" name="statusAr" id="field_statusAr"
+                [(ngModel)]="complianceStatus.statusAr" required/>
+            <div [hidden]="!(editForm.controls.statusAr?.dirty && editForm.controls.statusAr?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.statusAr?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.complianceStatus.statusEn" for="field_statusEn">Status En</label>
+            <input type="text" class="form-control" name="statusEn" id="field_statusEn"
+                [(ngModel)]="complianceStatus.statusEn" required/>
+            <div [hidden]="!(editForm.controls.statusEn?.dirty && editForm.controls.statusEn?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.statusEn?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.complianceStatus.createdDate" for="field_createdDate">Created Date</label>
+            <div class="d-flex">
+                <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="complianceStatus.createdDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.complianceStatus.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="complianceStatus.createdBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.complianceStatus.modifiedDate" for="field_modifiedDate">Modified Date</label>
+            <div class="d-flex">
+                <input id="field_modifiedDate" type="datetime-local" class="form-control" name="modifiedDate" [(ngModel)]="complianceStatus.modifiedDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.complianceStatus.modifiedBy" for="field_modifiedBy">Modified By</label>
+            <input type="text" class="form-control" name="modifiedBy" id="field_modifiedBy"
+                [(ngModel)]="complianceStatus.modifiedBy" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

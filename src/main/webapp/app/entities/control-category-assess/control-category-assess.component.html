@@ -1,0 +1,76 @@
+<div>
+    <h2>
+        <span jhiTranslate="assessorApp.controlCategory.home.title">Control Categories</span>
+        <button class="btn btn-primary float-right jh-create-entity create-control-category-assess" [routerLink]="['/', { outlets: { popup: ['control-category-assess-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="assessorApp.controlCategory.home.createLabel">
+            Create new Control Category
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="controlCategories">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="categoryAr"><span jhiTranslate="assessorApp.controlCategory.categoryAr">Category Ar</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="categoryEn"><span jhiTranslate="assessorApp.controlCategory.categoryEn">Category En</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="assessorApp.controlCategory.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="assessorApp.controlCategory.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="modifiedDate"><span jhiTranslate="assessorApp.controlCategory.modifiedDate">Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="modifiedBy"><span jhiTranslate="assessorApp.controlCategory.modifiedBy">Modified By</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let controlCategory of controlCategories ;trackBy: trackId">
+                <td><a [routerLink]="['../control-category-assess', controlCategory.id ]">{{controlCategory.id}}</a></td>
+                <td>{{controlCategory.categoryAr}}</td>
+                <td>{{controlCategory.categoryEn}}</td>
+                <td>{{controlCategory.createdDate | date:'medium'}}</td>
+                <td>{{controlCategory.createdBy}}</td>
+                <td>{{controlCategory.modifiedDate | date:'medium'}}</td>
+                <td>{{controlCategory.modifiedBy}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../control-category-assess', controlCategory.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'control-category-assess/'+ controlCategory.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'control-category-assess/'+ controlCategory.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="controlCategories && controlCategories.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

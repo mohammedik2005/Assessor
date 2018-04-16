@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity ControlCategory.
+    -->
+    <changeSet id="20180416073428-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="control_categories_id"
+                                 baseTableName="control_category_controls"
+                                 constraintName="fk_control_category_controls_control_categories_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="control_category"/>
+        <addForeignKeyConstraint baseColumnNames="controls_id"
+                                 baseTableName="control_category_controls"
+                                 constraintName="fk_control_category_controls_controls_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="control"/>
+        
+    </changeSet>
+</databaseChangeLog>

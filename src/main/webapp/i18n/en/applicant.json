@@ -1,0 +1,37 @@
+
+{
+    "assessorApp": {
+        "applicant" : {
+            "home": {
+                "title": "Applicants",
+                "createLabel": "Create a new Applicant",
+                "createOrEditLabel": "Create or edit a Applicant"
+            },
+            "created": "A new Applicant is created with identifier {{ param }}",
+            "updated": "A Applicant is updated with identifier {{ param }}",
+            "deleted": "A Applicant is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Applicant {{ id }}?"
+            },
+            "detail": {
+                "title": "Applicant"
+            },
+            "name": "Name",
+            "code": "Code",
+            "personName": "Person Name",
+            "jobTitle": "Job Title",
+            "department": "Department",
+            "email": "Email",
+            "phone": "Phone",
+            "phoneExt": "Phone Ext",
+            "contactPerson": "Contact Person",
+            "contactPhone": "Contact Phone",
+            "contactEmail": "Contact Email",
+            "createdDate": "Created Date",
+            "createdBy": "Created By",
+            "modifiedDate": "Modified Date",
+            "modifiedBy": "Modified By",
+            "values": "Values"
+        }
+    }
+}

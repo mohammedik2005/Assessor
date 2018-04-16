@@ -1,0 +1,76 @@
+<div>
+    <h2>
+        <span jhiTranslate="assessorApp.complianceEvidenceStatus.home.title">Compliance Evidence Statuses</span>
+        <button class="btn btn-primary float-right jh-create-entity create-compliance-evidence-status-assess" [routerLink]="['/', { outlets: { popup: ['compliance-evidence-status-assess-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="assessorApp.complianceEvidenceStatus.home.createLabel">
+            Create new Compliance Evidence Status
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="complianceEvidenceStatuses">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nameAr"><span jhiTranslate="assessorApp.complianceEvidenceStatus.nameAr">Name Ar</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nameEn"><span jhiTranslate="assessorApp.complianceEvidenceStatus.nameEn">Name En</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="assessorApp.complianceEvidenceStatus.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="assessorApp.complianceEvidenceStatus.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="modifiedDate"><span jhiTranslate="assessorApp.complianceEvidenceStatus.modifiedDate">Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="modifiedBy"><span jhiTranslate="assessorApp.complianceEvidenceStatus.modifiedBy">Modified By</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let complianceEvidenceStatus of complianceEvidenceStatuses ;trackBy: trackId">
+                <td><a [routerLink]="['../compliance-evidence-status-assess', complianceEvidenceStatus.id ]">{{complianceEvidenceStatus.id}}</a></td>
+                <td>{{complianceEvidenceStatus.nameAr}}</td>
+                <td>{{complianceEvidenceStatus.nameEn}}</td>
+                <td>{{complianceEvidenceStatus.createdDate | date:'medium'}}</td>
+                <td>{{complianceEvidenceStatus.createdBy}}</td>
+                <td>{{complianceEvidenceStatus.modifiedDate | date:'medium'}}</td>
+                <td>{{complianceEvidenceStatus.modifiedBy}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../compliance-evidence-status-assess', complianceEvidenceStatus.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'compliance-evidence-status-assess/'+ complianceEvidenceStatus.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'compliance-evidence-status-assess/'+ complianceEvidenceStatus.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="complianceEvidenceStatuses && complianceEvidenceStatuses.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

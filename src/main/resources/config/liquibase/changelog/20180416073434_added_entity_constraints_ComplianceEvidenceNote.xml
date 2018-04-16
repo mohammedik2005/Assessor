@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity ComplianceEvidenceNote.
+    -->
+    <changeSet id="20180416073434-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="compliance_evidence_notes_id"
+                                 baseTableName="compliance_evidence_note_values"
+                                 constraintName="fk_compliance_evidence_note_values_compliance_evidence_notes_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="compliance_evidence_note"/>
+        <addForeignKeyConstraint baseColumnNames="values_id"
+                                 baseTableName="compliance_evidence_note_values"
+                                 constraintName="fk_compliance_evidence_note_values_values_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="compliance_values"/>
+        
+    </changeSet>
+</databaseChangeLog>

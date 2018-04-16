@@ -1,0 +1,99 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "values",
+            "relationshipName": "attachments",
+            "otherEntityName": "attachment",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "complianceStatus",
+            "otherEntityName": "complianceStatus",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "complianceSchedule",
+            "otherEntityName": "complianceSchedule",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "evidenceType",
+            "otherEntityName": "complianceEvidenceType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "evidenceStatus",
+            "otherEntityName": "complianceEvidenceStatus",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "applicants",
+            "otherEntityName": "applicant",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "values"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "compliance",
+            "otherEntityName": "compliance",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "values"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "notes",
+            "otherEntityName": "complianceEvidenceNote",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "values"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "ownership",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "justification",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isCompleted",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "evidenceName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "modifiedDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "modifiedBy",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180416073430",
+    "entityTableName": "compliance_values",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "assess"
+}

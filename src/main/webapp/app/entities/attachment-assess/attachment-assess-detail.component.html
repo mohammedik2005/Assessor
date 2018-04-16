@@ -1,0 +1,66 @@
+
+<div *ngIf="attachment">
+    <h2><span jhiTranslate="assessorApp.attachment.detail.title">Attachment</span> {{attachment.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="assessorApp.attachment.description">Description</span></dt>
+        <dd>
+            <span>{{attachment.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.attachment.extension">Extension</span></dt>
+        <dd>
+            <span>{{attachment.extension}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.attachment.generatedName">Generated Name</span></dt>
+        <dd>
+            <span>{{attachment.generatedName}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.attachment.isActive">Is Active</span></dt>
+        <dd>
+            <span>{{attachment.isActive}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.attachment.mimeType">Mime Type</span></dt>
+        <dd>
+            <span>{{attachment.mimeType}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.attachment.originalName">Original Name</span></dt>
+        <dd>
+            <span>{{attachment.originalName}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.attachment.tableName">Table Name</span></dt>
+        <dd>
+            <span>{{attachment.tableName}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.attachment.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{attachment.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.attachment.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{attachment.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.attachment.modifiedDate">Modified Date</span></dt>
+        <dd>
+            <span>{{attachment.modifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.attachment.modifiedBy">Modified By</span></dt>
+        <dd>
+            <span>{{attachment.modifiedBy}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'attachment-assess/'+ attachment.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

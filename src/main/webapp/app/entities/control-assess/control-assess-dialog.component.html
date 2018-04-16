@@ -1,0 +1,99 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myControlLabel" jhiTranslate="assessorApp.control.home.createOrEditLabel">Create or edit a Control</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!control.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="control.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.control.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="control.code" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.control.nameAr" for="field_nameAr">Name Ar</label>
+            <input type="text" class="form-control" name="nameAr" id="field_nameAr"
+                [(ngModel)]="control.nameAr" required/>
+            <div [hidden]="!(editForm.controls.nameAr?.dirty && editForm.controls.nameAr?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nameAr?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.control.nameEn" for="field_nameEn">Name En</label>
+            <input type="text" class="form-control" name="nameEn" id="field_nameEn"
+                [(ngModel)]="control.nameEn" required/>
+            <div [hidden]="!(editForm.controls.nameEn?.dirty && editForm.controls.nameEn?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nameEn?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.control.descriptionAr" for="field_descriptionAr">Description Ar</label>
+            <input type="text" class="form-control" name="descriptionAr" id="field_descriptionAr"
+                [(ngModel)]="control.descriptionAr" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.control.descriptionEn" for="field_descriptionEn">Description En</label>
+            <input type="text" class="form-control" name="descriptionEn" id="field_descriptionEn"
+                [(ngModel)]="control.descriptionEn" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.control.createdDate" for="field_createdDate">Created Date</label>
+            <div class="d-flex">
+                <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="control.createdDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.control.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="control.createdBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.control.modifiedDate" for="field_modifiedDate">Modified Date</label>
+            <div class="d-flex">
+                <input id="field_modifiedDate" type="datetime-local" class="form-control" name="modifiedDate" [(ngModel)]="control.modifiedDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.control.modifiedBy" for="field_modifiedBy">Modified By</label>
+            <input type="text" class="form-control" name="modifiedBy" id="field_modifiedBy"
+                [(ngModel)]="control.modifiedBy" />
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="assessorApp.control.attachments" for="field_attachments">Attachments</label>
+            <select class="form-control" id="field_attachments" multiple name="attachments" [(ngModel)]="control.attachments">
+                <option [ngValue]="getSelected(control.attachments, attachmentOption)" *ngFor="let attachmentOption of attachments; trackBy: trackAttachmentById">{{attachmentOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.control.priority" for="field_priority">Priority</label>
+            <select class="form-control" id="field_priority" name="priority" [(ngModel)]="control.priorityId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="controlPriorityOption.id" *ngFor="let controlPriorityOption of controlpriorities; trackBy: trackControlPriorityById">{{controlPriorityOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,28 @@
+
+{
+    "assessorApp": {
+        "complianceSchedule" : {
+            "home": {
+                "title": "Compliance Schedules",
+                "createLabel": "Create a new Compliance Schedule",
+                "createOrEditLabel": "Create or edit a Compliance Schedule"
+            },
+            "created": "A new Compliance Schedule is created with identifier {{ param }}",
+            "updated": "A Compliance Schedule is updated with identifier {{ param }}",
+            "deleted": "A Compliance Schedule is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Compliance Schedule {{ id }}?"
+            },
+            "detail": {
+                "title": "Compliance Schedule"
+            },
+            "text": "Text",
+            "createdDate": "Created Date",
+            "createdBy": "Created By",
+            "modifiedDate": "Modified Date",
+            "modifiedBy": "Modified By",
+            "values": "Values",
+            "assessments": "Assessments"
+        }
+    }
+}

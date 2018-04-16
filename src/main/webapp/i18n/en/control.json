@@ -1,0 +1,35 @@
+
+{
+    "assessorApp": {
+        "control" : {
+            "home": {
+                "title": "Controls",
+                "createLabel": "Create a new Control",
+                "createOrEditLabel": "Create or edit a Control"
+            },
+            "created": "A new Control is created with identifier {{ param }}",
+            "updated": "A Control is updated with identifier {{ param }}",
+            "deleted": "A Control is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Control {{ id }}?"
+            },
+            "detail": {
+                "title": "Control"
+            },
+            "code": "Code",
+            "nameAr": "Name Ar",
+            "nameEn": "Name En",
+            "descriptionAr": "Description Ar",
+            "descriptionEn": "Description En",
+            "createdDate": "Created Date",
+            "createdBy": "Created By",
+            "modifiedDate": "Modified Date",
+            "modifiedBy": "Modified By",
+            "domains": "Domains",
+            "compliances": "Compliances",
+            "attachments": "Attachments",
+            "priority": "Priority",
+            "categories": "Categories"
+        }
+    }
+}

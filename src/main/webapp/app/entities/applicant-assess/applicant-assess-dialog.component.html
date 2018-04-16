@@ -1,0 +1,110 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myApplicantLabel" jhiTranslate="assessorApp.applicant.home.createOrEditLabel">Create or edit a Applicant</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!applicant.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="applicant.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.applicant.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="applicant.name" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.applicant.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="applicant.code" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.applicant.personName" for="field_personName">Person Name</label>
+            <input type="text" class="form-control" name="personName" id="field_personName"
+                [(ngModel)]="applicant.personName" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.applicant.jobTitle" for="field_jobTitle">Job Title</label>
+            <input type="text" class="form-control" name="jobTitle" id="field_jobTitle"
+                [(ngModel)]="applicant.jobTitle" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.applicant.department" for="field_department">Department</label>
+            <input type="text" class="form-control" name="department" id="field_department"
+                [(ngModel)]="applicant.department" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.applicant.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                [(ngModel)]="applicant.email" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.applicant.phone" for="field_phone">Phone</label>
+            <input type="text" class="form-control" name="phone" id="field_phone"
+                [(ngModel)]="applicant.phone" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.applicant.phoneExt" for="field_phoneExt">Phone Ext</label>
+            <input type="text" class="form-control" name="phoneExt" id="field_phoneExt"
+                [(ngModel)]="applicant.phoneExt" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.applicant.contactPerson" for="field_contactPerson">Contact Person</label>
+            <input type="text" class="form-control" name="contactPerson" id="field_contactPerson"
+                [(ngModel)]="applicant.contactPerson" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.applicant.contactPhone" for="field_contactPhone">Contact Phone</label>
+            <input type="text" class="form-control" name="contactPhone" id="field_contactPhone"
+                [(ngModel)]="applicant.contactPhone" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.applicant.contactEmail" for="field_contactEmail">Contact Email</label>
+            <input type="text" class="form-control" name="contactEmail" id="field_contactEmail"
+                [(ngModel)]="applicant.contactEmail" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.applicant.createdDate" for="field_createdDate">Created Date</label>
+            <div class="d-flex">
+                <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="applicant.createdDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.applicant.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="applicant.createdBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.applicant.modifiedDate" for="field_modifiedDate">Modified Date</label>
+            <div class="d-flex">
+                <input id="field_modifiedDate" type="datetime-local" class="form-control" name="modifiedDate" [(ngModel)]="applicant.modifiedDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.applicant.modifiedBy" for="field_modifiedBy">Modified By</label>
+            <input type="text" class="form-control" name="modifiedBy" id="field_modifiedBy"
+                [(ngModel)]="applicant.modifiedBy" />
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="assessorApp.applicant.values" for="field_values">Values</label>
+            <select class="form-control" id="field_values" multiple name="values" [(ngModel)]="applicant.values">
+                <option [ngValue]="getSelected(applicant.values, complianceValuesOption)" *ngFor="let complianceValuesOption of compliancevalues; trackBy: trackComplianceValuesById">{{complianceValuesOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

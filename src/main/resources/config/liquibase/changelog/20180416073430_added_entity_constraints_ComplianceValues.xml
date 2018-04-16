@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity ComplianceValues.
+    -->
+    <changeSet id="20180416073430-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="compliance_values_id"
+                                 baseTableName="compliance_values_attachments"
+                                 constraintName="fk_compliance_values_attachments_compliance_values_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="compliance_values"/>
+        <addForeignKeyConstraint baseColumnNames="attachments_id"
+                                 baseTableName="compliance_values_attachments"
+                                 constraintName="fk_compliance_values_attachments_attachments_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="attachment"/>
+        
+        <addForeignKeyConstraint baseColumnNames="compliance_status_id"
+                                 baseTableName="compliance_values"
+                                 constraintName="fk_compliance_values_compliance_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="compliance_status"/>
+
+        <addForeignKeyConstraint baseColumnNames="compliance_schedule_id"
+                                 baseTableName="compliance_values"
+                                 constraintName="fk_compliance_values_compliance_schedule_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="compliance_schedule"/>
+
+        <addForeignKeyConstraint baseColumnNames="evidence_type_id"
+                                 baseTableName="compliance_values"
+                                 constraintName="fk_compliance_values_evidence_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="compliance_evidence_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="evidence_status_id"
+                                 baseTableName="compliance_values"
+                                 constraintName="fk_compliance_values_evidence_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="compliance_evidence_status"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,28 @@
+
+{
+    "assessorApp": {
+        "complianceFlag" : {
+            "home": {
+                "title": "Compliance Flags",
+                "createLabel": "Create a new Compliance Flag",
+                "createOrEditLabel": "Create or edit a Compliance Flag"
+            },
+            "created": "A new Compliance Flag is created with identifier {{ param }}",
+            "updated": "A Compliance Flag is updated with identifier {{ param }}",
+            "deleted": "A Compliance Flag is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Compliance Flag {{ id }}?"
+            },
+            "detail": {
+                "title": "Compliance Flag"
+            },
+            "nameAr": "Name Ar",
+            "nameEn": "Name En",
+            "createdDate": "Created Date",
+            "createdBy": "Created By",
+            "modifiedDate": "Modified Date",
+            "modifiedBy": "Modified By",
+            "compliances": "Compliances"
+        }
+    }
+}

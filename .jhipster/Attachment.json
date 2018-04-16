@@ -1,0 +1,79 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "domains",
+            "otherEntityName": "domain",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "attachments"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "values",
+            "otherEntityName": "complianceValues",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "attachments"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "controls",
+            "otherEntityName": "control",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "attachments"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "extension",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "generatedName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isActive",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "mimeType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "originalName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tableName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "modifiedDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "modifiedBy",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180416073436",
+    "entityTableName": "attachment",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "assess"
+}

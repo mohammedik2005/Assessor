@@ -1,0 +1,23 @@
+
+{
+    "assessorApp": {
+        "complianceEvidenceNote" : {
+            "home": {
+                "title": "Compliance Evidence Notes",
+                "createLabel": "Create a new Compliance Evidence Note",
+                "createOrEditLabel": "Create or edit a Compliance Evidence Note"
+            },
+            "created": "A new Compliance Evidence Note is created with identifier {{ param }}",
+            "updated": "A Compliance Evidence Note is updated with identifier {{ param }}",
+            "deleted": "A Compliance Evidence Note is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Compliance Evidence Note {{ id }}?"
+            },
+            "detail": {
+                "title": "Compliance Evidence Note"
+            },
+            "text": "Text",
+            "values": "Values"
+        }
+    }
+}

@@ -1,0 +1,84 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAttachmentLabel" jhiTranslate="assessorApp.attachment.home.createOrEditLabel">Create or edit a Attachment</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!attachment.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="attachment.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.attachment.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="attachment.description" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.attachment.extension" for="field_extension">Extension</label>
+            <input type="text" class="form-control" name="extension" id="field_extension"
+                [(ngModel)]="attachment.extension" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.attachment.generatedName" for="field_generatedName">Generated Name</label>
+            <input type="text" class="form-control" name="generatedName" id="field_generatedName"
+                [(ngModel)]="attachment.generatedName" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.attachment.isActive" for="field_isActive">Is Active</label>
+            <input type="number" class="form-control" name="isActive" id="field_isActive"
+                [(ngModel)]="attachment.isActive" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.attachment.mimeType" for="field_mimeType">Mime Type</label>
+            <input type="text" class="form-control" name="mimeType" id="field_mimeType"
+                [(ngModel)]="attachment.mimeType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.attachment.originalName" for="field_originalName">Original Name</label>
+            <input type="text" class="form-control" name="originalName" id="field_originalName"
+                [(ngModel)]="attachment.originalName" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.attachment.tableName" for="field_tableName">Table Name</label>
+            <input type="text" class="form-control" name="tableName" id="field_tableName"
+                [(ngModel)]="attachment.tableName" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.attachment.createdDate" for="field_createdDate">Created Date</label>
+            <div class="d-flex">
+                <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="attachment.createdDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.attachment.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="attachment.createdBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.attachment.modifiedDate" for="field_modifiedDate">Modified Date</label>
+            <div class="d-flex">
+                <input id="field_modifiedDate" type="datetime-local" class="form-control" name="modifiedDate" [(ngModel)]="attachment.modifiedDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.attachment.modifiedBy" for="field_modifiedBy">Modified By</label>
+            <input type="text" class="form-control" name="modifiedBy" id="field_modifiedBy"
+                [(ngModel)]="attachment.modifiedBy" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

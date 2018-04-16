@@ -1,0 +1,84 @@
+
+<div *ngIf="complianceValues">
+    <h2><span jhiTranslate="assessorApp.complianceValues.detail.title">Compliance Values</span> {{complianceValues.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="assessorApp.complianceValues.ownership">Ownership</span></dt>
+        <dd>
+            <span>{{complianceValues.ownership}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceValues.justification">Justification</span></dt>
+        <dd>
+            <span>{{complianceValues.justification}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceValues.isCompleted">Is Completed</span></dt>
+        <dd>
+            <span>{{complianceValues.isCompleted}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceValues.evidenceName">Evidence Name</span></dt>
+        <dd>
+            <span>{{complianceValues.evidenceName}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceValues.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{complianceValues.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceValues.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{complianceValues.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceValues.modifiedDate">Modified Date</span></dt>
+        <dd>
+            <span>{{complianceValues.modifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceValues.modifiedBy">Modified By</span></dt>
+        <dd>
+            <span>{{complianceValues.modifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceValues.attachments">Attachments</span></dt>
+        <dd>
+            <span *ngFor="let attachments of complianceValues.attachments; let last = last">
+                <a [routerLink]="['/attachment-assess', attachments?.id ]">{{attachments.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceValues.complianceStatus">Compliance Status</span></dt>
+        <dd>
+            <div *ngIf="complianceValues.complianceStatusId">
+                <a [routerLink]="['/compliance-status-assess', complianceValues.complianceStatusId]">{{complianceValues.complianceStatusId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceValues.complianceSchedule">Compliance Schedule</span></dt>
+        <dd>
+            <div *ngIf="complianceValues.complianceScheduleId">
+                <a [routerLink]="['/compliance-schedule-assess', complianceValues.complianceScheduleId]">{{complianceValues.complianceScheduleId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceValues.evidenceType">Evidence Type</span></dt>
+        <dd>
+            <div *ngIf="complianceValues.evidenceTypeId">
+                <a [routerLink]="['/compliance-evidence-type-assess', complianceValues.evidenceTypeId]">{{complianceValues.evidenceTypeId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceValues.evidenceStatus">Evidence Status</span></dt>
+        <dd>
+            <div *ngIf="complianceValues.evidenceStatusId">
+                <a [routerLink]="['/compliance-evidence-status-assess', complianceValues.evidenceStatusId]">{{complianceValues.evidenceStatusId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'compliance-values-assess/'+ complianceValues.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

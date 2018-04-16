@@ -1,0 +1,103 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myComplianceValuesLabel" jhiTranslate="assessorApp.complianceValues.home.createOrEditLabel">Create or edit a Compliance Values</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!complianceValues.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="complianceValues.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.complianceValues.ownership" for="field_ownership">Ownership</label>
+            <input type="text" class="form-control" name="ownership" id="field_ownership"
+                [(ngModel)]="complianceValues.ownership" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.complianceValues.justification" for="field_justification">Justification</label>
+            <input type="text" class="form-control" name="justification" id="field_justification"
+                [(ngModel)]="complianceValues.justification" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.complianceValues.isCompleted" for="field_isCompleted">Is Completed</label>
+            <input type="number" class="form-control" name="isCompleted" id="field_isCompleted"
+                [(ngModel)]="complianceValues.isCompleted" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.complianceValues.evidenceName" for="field_evidenceName">Evidence Name</label>
+            <input type="text" class="form-control" name="evidenceName" id="field_evidenceName"
+                [(ngModel)]="complianceValues.evidenceName" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.complianceValues.createdDate" for="field_createdDate">Created Date</label>
+            <div class="d-flex">
+                <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="complianceValues.createdDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.complianceValues.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="complianceValues.createdBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.complianceValues.modifiedDate" for="field_modifiedDate">Modified Date</label>
+            <div class="d-flex">
+                <input id="field_modifiedDate" type="datetime-local" class="form-control" name="modifiedDate" [(ngModel)]="complianceValues.modifiedDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.complianceValues.modifiedBy" for="field_modifiedBy">Modified By</label>
+            <input type="text" class="form-control" name="modifiedBy" id="field_modifiedBy"
+                [(ngModel)]="complianceValues.modifiedBy" />
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="assessorApp.complianceValues.attachments" for="field_attachments">Attachments</label>
+            <select class="form-control" id="field_attachments" multiple name="attachments" [(ngModel)]="complianceValues.attachments">
+                <option [ngValue]="getSelected(complianceValues.attachments, attachmentOption)" *ngFor="let attachmentOption of attachments; trackBy: trackAttachmentById">{{attachmentOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.complianceValues.complianceStatus" for="field_complianceStatus">Compliance Status</label>
+            <select class="form-control" id="field_complianceStatus" name="complianceStatus" [(ngModel)]="complianceValues.complianceStatusId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="complianceStatusOption.id" *ngFor="let complianceStatusOption of compliancestatuses; trackBy: trackComplianceStatusById">{{complianceStatusOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.complianceValues.complianceSchedule" for="field_complianceSchedule">Compliance Schedule</label>
+            <select class="form-control" id="field_complianceSchedule" name="complianceSchedule" [(ngModel)]="complianceValues.complianceScheduleId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="complianceScheduleOption.id" *ngFor="let complianceScheduleOption of complianceschedules; trackBy: trackComplianceScheduleById">{{complianceScheduleOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.complianceValues.evidenceType" for="field_evidenceType">Evidence Type</label>
+            <select class="form-control" id="field_evidenceType" name="evidenceType" [(ngModel)]="complianceValues.evidenceTypeId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="complianceEvidenceTypeOption.id" *ngFor="let complianceEvidenceTypeOption of complianceevidencetypes; trackBy: trackComplianceEvidenceTypeById">{{complianceEvidenceTypeOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.complianceValues.evidenceStatus" for="field_evidenceStatus">Evidence Status</label>
+            <select class="form-control" id="field_evidenceStatus" name="evidenceStatus" [(ngModel)]="complianceValues.evidenceStatusId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="complianceEvidenceStatusOption.id" *ngFor="let complianceEvidenceStatusOption of complianceevidencestatuses; trackBy: trackComplianceEvidenceStatusById">{{complianceEvidenceStatusOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

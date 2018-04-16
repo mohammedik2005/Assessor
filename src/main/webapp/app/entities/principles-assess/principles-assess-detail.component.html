@@ -1,0 +1,54 @@
+
+<div *ngIf="principles">
+    <h2><span jhiTranslate="assessorApp.principles.detail.title">Principles</span> {{principles.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="assessorApp.principles.nameAr">Name Ar</span></dt>
+        <dd>
+            <span>{{principles.nameAr}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.principles.nameEn">Name En</span></dt>
+        <dd>
+            <span>{{principles.nameEn}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.principles.descriptionAr">Description Ar</span></dt>
+        <dd>
+            <span>{{principles.descriptionAr}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.principles.descriptionEn">Description En</span></dt>
+        <dd>
+            <span>{{principles.descriptionEn}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.principles.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{principles.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.principles.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{principles.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.principles.modifiedDate">Modified Date</span></dt>
+        <dd>
+            <span>{{principles.modifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.principles.modifiedBy">Modified By</span></dt>
+        <dd>
+            <span>{{principles.modifiedBy}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'principles-assess/'+ principles.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -7,6 +7,22 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entities",
+                "principlesAssess": "Principles",
+                "domainAssess": "Domain",
+                "controlAssess": "Control",
+                "controlPriorityAssess": "Control Priority",
+                "controlCategoryAssess": "Control Category",
+                "complianceAssess": "Compliance",
+                "complianceValuesAssess": "Compliance Values",
+                "complianceScheduleAssess": "Compliance Schedule",
+                "assessmentScheduleAssess": "Assessment Schedule",
+                "complianceEvidenceTypeAssess": "Compliance Evidence Type",
+                "complianceEvidenceNoteAssess": "Compliance Evidence Note",
+                "complianceEvidenceStatusAssess": "Compliance Evidence Status",
+                "attachmentAssess": "Attachment",
+                "complianceStatusAssess": "Compliance Status",
+                "complianceFlagAssess": "Compliance Flag",
+                "applicantAssess": "Applicant",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

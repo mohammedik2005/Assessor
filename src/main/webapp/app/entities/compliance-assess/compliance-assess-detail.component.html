@@ -1,0 +1,76 @@
+
+<div *ngIf="compliance">
+    <h2><span jhiTranslate="assessorApp.compliance.detail.title">Compliance</span> {{compliance.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="assessorApp.compliance.code">Code</span></dt>
+        <dd>
+            <span>{{compliance.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.compliance.descriptionAr">Description Ar</span></dt>
+        <dd>
+            <span>{{compliance.descriptionAr}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.compliance.descriptionEn">Description En</span></dt>
+        <dd>
+            <span>{{compliance.descriptionEn}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.compliance.complianceVersion">Compliance Version</span></dt>
+        <dd>
+            <span>{{compliance.complianceVersion}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.compliance.version">Version</span></dt>
+        <dd>
+            <span>{{compliance.version}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.compliance.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{compliance.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.compliance.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{compliance.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.compliance.modifiedDate">Modified Date</span></dt>
+        <dd>
+            <span>{{compliance.modifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.compliance.modifiedBy">Modified By</span></dt>
+        <dd>
+            <span>{{compliance.modifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.compliance.values">Values</span></dt>
+        <dd>
+            <span *ngFor="let values of compliance.values; let last = last">
+                <a [routerLink]="['/compliance-values-assess', values?.id ]">{{values.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.compliance.control">Control</span></dt>
+        <dd>
+            <div *ngIf="compliance.controlId">
+                <a [routerLink]="['/control-assess', compliance.controlId]">{{compliance.controlId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.compliance.complianceFlag">Compliance Flag</span></dt>
+        <dd>
+            <div *ngIf="compliance.complianceFlagId">
+                <a [routerLink]="['/compliance-flag-assess', compliance.complianceFlagId]">{{compliance.complianceFlagId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'compliance-assess/'+ compliance.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

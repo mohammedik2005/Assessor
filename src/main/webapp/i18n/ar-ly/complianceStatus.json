@@ -1,0 +1,28 @@
+
+{
+    "assessorApp": {
+        "complianceStatus" : {
+            "home": {
+                "title": "Compliance Statuses",
+                "createLabel": "Create a new Compliance Status",
+                "createOrEditLabel": "Create or edit a Compliance Status"
+            },
+            "created": "A new Compliance Status is created with identifier {{ param }}",
+            "updated": "A Compliance Status is updated with identifier {{ param }}",
+            "deleted": "A Compliance Status is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Compliance Status {{ id }}?"
+            },
+            "detail": {
+                "title": "Compliance Status"
+            },
+            "statusAr": "Status Ar",
+            "statusEn": "Status En",
+            "createdDate": "Created Date",
+            "createdBy": "Created By",
+            "modifiedDate": "Modified Date",
+            "modifiedBy": "Modified By",
+            "values": "Values"
+        }
+    }
+}

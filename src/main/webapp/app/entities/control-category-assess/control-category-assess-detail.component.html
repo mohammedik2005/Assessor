@@ -1,0 +1,52 @@
+
+<div *ngIf="controlCategory">
+    <h2><span jhiTranslate="assessorApp.controlCategory.detail.title">Control Category</span> {{controlCategory.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="assessorApp.controlCategory.categoryAr">Category Ar</span></dt>
+        <dd>
+            <span>{{controlCategory.categoryAr}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.controlCategory.categoryEn">Category En</span></dt>
+        <dd>
+            <span>{{controlCategory.categoryEn}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.controlCategory.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{controlCategory.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.controlCategory.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{controlCategory.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.controlCategory.modifiedDate">Modified Date</span></dt>
+        <dd>
+            <span>{{controlCategory.modifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.controlCategory.modifiedBy">Modified By</span></dt>
+        <dd>
+            <span>{{controlCategory.modifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.controlCategory.controls">Controls</span></dt>
+        <dd>
+            <span *ngFor="let controls of controlCategory.controls; let last = last">
+                <a [routerLink]="['/control-assess', controls?.id ]">{{controls.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'control-category-assess/'+ controlCategory.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

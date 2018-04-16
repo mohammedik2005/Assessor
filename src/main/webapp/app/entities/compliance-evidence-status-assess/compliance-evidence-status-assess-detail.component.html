@@ -1,0 +1,46 @@
+
+<div *ngIf="complianceEvidenceStatus">
+    <h2><span jhiTranslate="assessorApp.complianceEvidenceStatus.detail.title">Compliance Evidence Status</span> {{complianceEvidenceStatus.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="assessorApp.complianceEvidenceStatus.nameAr">Name Ar</span></dt>
+        <dd>
+            <span>{{complianceEvidenceStatus.nameAr}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceEvidenceStatus.nameEn">Name En</span></dt>
+        <dd>
+            <span>{{complianceEvidenceStatus.nameEn}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceEvidenceStatus.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{complianceEvidenceStatus.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceEvidenceStatus.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{complianceEvidenceStatus.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceEvidenceStatus.modifiedDate">Modified Date</span></dt>
+        <dd>
+            <span>{{complianceEvidenceStatus.modifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceEvidenceStatus.modifiedBy">Modified By</span></dt>
+        <dd>
+            <span>{{complianceEvidenceStatus.modifiedBy}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'compliance-evidence-status-assess/'+ complianceEvidenceStatus.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

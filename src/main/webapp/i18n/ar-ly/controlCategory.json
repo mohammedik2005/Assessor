@@ -1,0 +1,28 @@
+
+{
+    "assessorApp": {
+        "controlCategory" : {
+            "home": {
+                "title": "Control Categories",
+                "createLabel": "Create a new Control Category",
+                "createOrEditLabel": "Create or edit a Control Category"
+            },
+            "created": "A new Control Category is created with identifier {{ param }}",
+            "updated": "A Control Category is updated with identifier {{ param }}",
+            "deleted": "A Control Category is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Control Category {{ id }}?"
+            },
+            "detail": {
+                "title": "Control Category"
+            },
+            "categoryAr": "Category Ar",
+            "categoryEn": "Category En",
+            "createdDate": "Created Date",
+            "createdBy": "Created By",
+            "modifiedDate": "Modified Date",
+            "modifiedBy": "Modified By",
+            "controls": "Controls"
+        }
+    }
+}

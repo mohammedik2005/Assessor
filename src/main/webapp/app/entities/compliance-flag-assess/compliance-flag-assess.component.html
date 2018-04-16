@@ -1,0 +1,76 @@
+<div>
+    <h2>
+        <span jhiTranslate="assessorApp.complianceFlag.home.title">Compliance Flags</span>
+        <button class="btn btn-primary float-right jh-create-entity create-compliance-flag-assess" [routerLink]="['/', { outlets: { popup: ['compliance-flag-assess-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="assessorApp.complianceFlag.home.createLabel">
+            Create new Compliance Flag
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="complianceFlags">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nameAr"><span jhiTranslate="assessorApp.complianceFlag.nameAr">Name Ar</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nameEn"><span jhiTranslate="assessorApp.complianceFlag.nameEn">Name En</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="assessorApp.complianceFlag.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="assessorApp.complianceFlag.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="modifiedDate"><span jhiTranslate="assessorApp.complianceFlag.modifiedDate">Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="modifiedBy"><span jhiTranslate="assessorApp.complianceFlag.modifiedBy">Modified By</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let complianceFlag of complianceFlags ;trackBy: trackId">
+                <td><a [routerLink]="['../compliance-flag-assess', complianceFlag.id ]">{{complianceFlag.id}}</a></td>
+                <td>{{complianceFlag.nameAr}}</td>
+                <td>{{complianceFlag.nameEn}}</td>
+                <td>{{complianceFlag.createdDate | date:'medium'}}</td>
+                <td>{{complianceFlag.createdBy}}</td>
+                <td>{{complianceFlag.modifiedDate | date:'medium'}}</td>
+                <td>{{complianceFlag.modifiedBy}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../compliance-flag-assess', complianceFlag.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'compliance-flag-assess/'+ complianceFlag.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'compliance-flag-assess/'+ complianceFlag.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="complianceFlags && complianceFlags.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

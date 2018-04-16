@@ -1,0 +1,76 @@
+
+<div *ngIf="domain">
+    <h2><span jhiTranslate="assessorApp.domain.detail.title">Domain</span> {{domain.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="assessorApp.domain.nameAr">Name Ar</span></dt>
+        <dd>
+            <span>{{domain.nameAr}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.domain.nameEn">Name En</span></dt>
+        <dd>
+            <span>{{domain.nameEn}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.domain.descriptionAr">Description Ar</span></dt>
+        <dd>
+            <span>{{domain.descriptionAr}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.domain.descriptionEn">Description En</span></dt>
+        <dd>
+            <span>{{domain.descriptionEn}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.domain.code">Code</span></dt>
+        <dd>
+            <span>{{domain.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.domain.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{domain.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.domain.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{domain.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.domain.modifiedDate">Modified Date</span></dt>
+        <dd>
+            <span>{{domain.modifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.domain.modifiedBy">Modified By</span></dt>
+        <dd>
+            <span>{{domain.modifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.domain.attachments">Attachments</span></dt>
+        <dd>
+            <span *ngFor="let attachments of domain.attachments; let last = last">
+                <a [routerLink]="['/attachment-assess', attachments?.id ]">{{attachments.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.domain.principle">Principle</span></dt>
+        <dd>
+            <div *ngIf="domain.principleId">
+                <a [routerLink]="['/principles-assess', domain.principleId]">{{domain.principleId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.domain.control">Control</span></dt>
+        <dd>
+            <div *ngIf="domain.controlId">
+                <a [routerLink]="['/control-assess', domain.controlId]">{{domain.controlId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'domain-assess/'+ domain.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

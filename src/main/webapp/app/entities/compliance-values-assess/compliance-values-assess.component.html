@@ -1,0 +1,104 @@
+<div>
+    <h2>
+        <span jhiTranslate="assessorApp.complianceValues.home.title">Compliance Values</span>
+        <button class="btn btn-primary float-right jh-create-entity create-compliance-values-assess" [routerLink]="['/', { outlets: { popup: ['compliance-values-assess-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="assessorApp.complianceValues.home.createLabel">
+            Create new Compliance Values
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="complianceValues">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ownership"><span jhiTranslate="assessorApp.complianceValues.ownership">Ownership</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="justification"><span jhiTranslate="assessorApp.complianceValues.justification">Justification</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="isCompleted"><span jhiTranslate="assessorApp.complianceValues.isCompleted">Is Completed</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="evidenceName"><span jhiTranslate="assessorApp.complianceValues.evidenceName">Evidence Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="assessorApp.complianceValues.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="assessorApp.complianceValues.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="modifiedDate"><span jhiTranslate="assessorApp.complianceValues.modifiedDate">Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="modifiedBy"><span jhiTranslate="assessorApp.complianceValues.modifiedBy">Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="complianceStatusId"><span jhiTranslate="assessorApp.complianceValues.complianceStatus">Compliance Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="complianceScheduleId"><span jhiTranslate="assessorApp.complianceValues.complianceSchedule">Compliance Schedule</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="evidenceTypeId"><span jhiTranslate="assessorApp.complianceValues.evidenceType">Evidence Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="evidenceStatusId"><span jhiTranslate="assessorApp.complianceValues.evidenceStatus">Evidence Status</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let complianceValues of complianceValues ;trackBy: trackId">
+                <td><a [routerLink]="['../compliance-values-assess', complianceValues.id ]">{{complianceValues.id}}</a></td>
+                <td>{{complianceValues.ownership}}</td>
+                <td>{{complianceValues.justification}}</td>
+                <td>{{complianceValues.isCompleted}}</td>
+                <td>{{complianceValues.evidenceName}}</td>
+                <td>{{complianceValues.createdDate | date:'medium'}}</td>
+                <td>{{complianceValues.createdBy}}</td>
+                <td>{{complianceValues.modifiedDate | date:'medium'}}</td>
+                <td>{{complianceValues.modifiedBy}}</td>
+                <td>
+                    <div *ngIf="complianceValues.complianceStatusId">
+                        <a [routerLink]="['../compliance-status-assess', complianceValues.complianceStatusId  ]" >{{complianceValues.complianceStatusId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="complianceValues.complianceScheduleId">
+                        <a [routerLink]="['../compliance-schedule-assess', complianceValues.complianceScheduleId  ]" >{{complianceValues.complianceScheduleId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="complianceValues.evidenceTypeId">
+                        <a [routerLink]="['../compliance-evidence-type-assess', complianceValues.evidenceTypeId  ]" >{{complianceValues.evidenceTypeId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="complianceValues.evidenceStatusId">
+                        <a [routerLink]="['../compliance-evidence-status-assess', complianceValues.evidenceStatusId  ]" >{{complianceValues.evidenceStatusId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../compliance-values-assess', complianceValues.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'compliance-values-assess/'+ complianceValues.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'compliance-values-assess/'+ complianceValues.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="complianceValues && complianceValues.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

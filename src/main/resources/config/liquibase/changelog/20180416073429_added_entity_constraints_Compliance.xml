@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Compliance.
+    -->
+    <changeSet id="20180416073429-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="compliances_id"
+                                 baseTableName="compliance_values"
+                                 constraintName="fk_compliance_values_compliances_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="compliance"/>
+        <addForeignKeyConstraint baseColumnNames="values_id"
+                                 baseTableName="compliance_values"
+                                 constraintName="fk_compliance_values_values_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="compliance_values"/>
+        
+        <addForeignKeyConstraint baseColumnNames="control_id"
+                                 baseTableName="compliance"
+                                 constraintName="fk_compliance_control_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="control"/>
+
+        <addForeignKeyConstraint baseColumnNames="compliance_flag_id"
+                                 baseTableName="compliance"
+                                 constraintName="fk_compliance_compliance_flag_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="compliance_flag"/>
+
+    </changeSet>
+</databaseChangeLog>

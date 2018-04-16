@@ -1,0 +1,46 @@
+
+<div *ngIf="complianceEvidenceType">
+    <h2><span jhiTranslate="assessorApp.complianceEvidenceType.detail.title">Compliance Evidence Type</span> {{complianceEvidenceType.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="assessorApp.complianceEvidenceType.nameAr">Name Ar</span></dt>
+        <dd>
+            <span>{{complianceEvidenceType.nameAr}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceEvidenceType.nameEn">Name En</span></dt>
+        <dd>
+            <span>{{complianceEvidenceType.nameEn}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceEvidenceType.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{complianceEvidenceType.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceEvidenceType.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{complianceEvidenceType.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceEvidenceType.modifiedDate">Modified Date</span></dt>
+        <dd>
+            <span>{{complianceEvidenceType.modifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.complianceEvidenceType.modifiedBy">Modified By</span></dt>
+        <dd>
+            <span>{{complianceEvidenceType.modifiedBy}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'compliance-evidence-type-assess/'+ complianceEvidenceType.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

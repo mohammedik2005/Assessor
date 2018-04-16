@@ -1,0 +1,88 @@
+
+<div *ngIf="applicant">
+    <h2><span jhiTranslate="assessorApp.applicant.detail.title">Applicant</span> {{applicant.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="assessorApp.applicant.name">Name</span></dt>
+        <dd>
+            <span>{{applicant.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.applicant.code">Code</span></dt>
+        <dd>
+            <span>{{applicant.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.applicant.personName">Person Name</span></dt>
+        <dd>
+            <span>{{applicant.personName}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.applicant.jobTitle">Job Title</span></dt>
+        <dd>
+            <span>{{applicant.jobTitle}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.applicant.department">Department</span></dt>
+        <dd>
+            <span>{{applicant.department}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.applicant.email">Email</span></dt>
+        <dd>
+            <span>{{applicant.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.applicant.phone">Phone</span></dt>
+        <dd>
+            <span>{{applicant.phone}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.applicant.phoneExt">Phone Ext</span></dt>
+        <dd>
+            <span>{{applicant.phoneExt}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.applicant.contactPerson">Contact Person</span></dt>
+        <dd>
+            <span>{{applicant.contactPerson}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.applicant.contactPhone">Contact Phone</span></dt>
+        <dd>
+            <span>{{applicant.contactPhone}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.applicant.contactEmail">Contact Email</span></dt>
+        <dd>
+            <span>{{applicant.contactEmail}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.applicant.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{applicant.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.applicant.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{applicant.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.applicant.modifiedDate">Modified Date</span></dt>
+        <dd>
+            <span>{{applicant.modifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.applicant.modifiedBy">Modified By</span></dt>
+        <dd>
+            <span>{{applicant.modifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.applicant.values">Values</span></dt>
+        <dd>
+            <span *ngFor="let values of applicant.values; let last = last">
+                <a [routerLink]="['/compliance-values-assess', values?.id ]">{{values.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'applicant-assess/'+ applicant.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

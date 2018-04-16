@@ -1,0 +1,70 @@
+
+<div *ngIf="control">
+    <h2><span jhiTranslate="assessorApp.control.detail.title">Control</span> {{control.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="assessorApp.control.code">Code</span></dt>
+        <dd>
+            <span>{{control.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.control.nameAr">Name Ar</span></dt>
+        <dd>
+            <span>{{control.nameAr}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.control.nameEn">Name En</span></dt>
+        <dd>
+            <span>{{control.nameEn}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.control.descriptionAr">Description Ar</span></dt>
+        <dd>
+            <span>{{control.descriptionAr}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.control.descriptionEn">Description En</span></dt>
+        <dd>
+            <span>{{control.descriptionEn}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.control.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{control.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.control.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{control.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.control.modifiedDate">Modified Date</span></dt>
+        <dd>
+            <span>{{control.modifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.control.modifiedBy">Modified By</span></dt>
+        <dd>
+            <span>{{control.modifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.control.attachments">Attachments</span></dt>
+        <dd>
+            <span *ngFor="let attachments of control.attachments; let last = last">
+                <a [routerLink]="['/attachment-assess', attachments?.id ]">{{attachments.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span jhiTranslate="assessorApp.control.priority">Priority</span></dt>
+        <dd>
+            <div *ngIf="control.priorityId">
+                <a [routerLink]="['/control-priority-assess', control.priorityId]">{{control.priorityId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'control-assess/'+ control.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

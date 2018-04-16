@@ -1,0 +1,28 @@
+
+{
+    "assessorApp": {
+        "complianceEvidenceStatus" : {
+            "home": {
+                "title": "Compliance Evidence Statuses",
+                "createLabel": "Create a new Compliance Evidence Status",
+                "createOrEditLabel": "Create or edit a Compliance Evidence Status"
+            },
+            "created": "A new Compliance Evidence Status is created with identifier {{ param }}",
+            "updated": "A Compliance Evidence Status is updated with identifier {{ param }}",
+            "deleted": "A Compliance Evidence Status is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Compliance Evidence Status {{ id }}?"
+            },
+            "detail": {
+                "title": "Compliance Evidence Status"
+            },
+            "nameAr": "Name Ar",
+            "nameEn": "Name En",
+            "createdDate": "Created Date",
+            "createdBy": "Created By",
+            "modifiedDate": "Modified Date",
+            "modifiedBy": "Modified By",
+            "values": "Values"
+        }
+    }
+}

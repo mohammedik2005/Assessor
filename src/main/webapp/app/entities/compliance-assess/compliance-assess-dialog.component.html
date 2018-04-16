@@ -1,0 +1,94 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myComplianceLabel" jhiTranslate="assessorApp.compliance.home.createOrEditLabel">Create or edit a Compliance</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!compliance.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="compliance.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.compliance.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="compliance.code" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.compliance.descriptionAr" for="field_descriptionAr">Description Ar</label>
+            <input type="text" class="form-control" name="descriptionAr" id="field_descriptionAr"
+                [(ngModel)]="compliance.descriptionAr" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.compliance.descriptionEn" for="field_descriptionEn">Description En</label>
+            <input type="text" class="form-control" name="descriptionEn" id="field_descriptionEn"
+                [(ngModel)]="compliance.descriptionEn" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.compliance.complianceVersion" for="field_complianceVersion">Compliance Version</label>
+            <input type="number" class="form-control" name="complianceVersion" id="field_complianceVersion"
+                [(ngModel)]="compliance.complianceVersion" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.compliance.version" for="field_version">Version</label>
+            <input type="number" class="form-control" name="version" id="field_version"
+                [(ngModel)]="compliance.version" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.compliance.createdDate" for="field_createdDate">Created Date</label>
+            <div class="d-flex">
+                <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="compliance.createdDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.compliance.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="compliance.createdBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.compliance.modifiedDate" for="field_modifiedDate">Modified Date</label>
+            <div class="d-flex">
+                <input id="field_modifiedDate" type="datetime-local" class="form-control" name="modifiedDate" [(ngModel)]="compliance.modifiedDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.compliance.modifiedBy" for="field_modifiedBy">Modified By</label>
+            <input type="text" class="form-control" name="modifiedBy" id="field_modifiedBy"
+                [(ngModel)]="compliance.modifiedBy" />
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="assessorApp.compliance.values" for="field_values">Values</label>
+            <select class="form-control" id="field_values" multiple name="values" [(ngModel)]="compliance.values">
+                <option [ngValue]="getSelected(compliance.values, complianceValuesOption)" *ngFor="let complianceValuesOption of compliancevalues; trackBy: trackComplianceValuesById">{{complianceValuesOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.compliance.control" for="field_control">Control</label>
+            <select class="form-control" id="field_control" name="control" [(ngModel)]="compliance.controlId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="controlOption.id" *ngFor="let controlOption of controls; trackBy: trackControlById">{{controlOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="assessorApp.compliance.complianceFlag" for="field_complianceFlag">Compliance Flag</label>
+            <select class="form-control" id="field_complianceFlag" name="complianceFlag" [(ngModel)]="compliance.complianceFlagId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="complianceFlagOption.id" *ngFor="let complianceFlagOption of complianceflags; trackBy: trackComplianceFlagById">{{complianceFlagOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

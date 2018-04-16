@@ -1,0 +1,33 @@
+
+{
+    "assessorApp": {
+        "compliance" : {
+            "home": {
+                "title": "Compliances",
+                "createLabel": "Create a new Compliance",
+                "createOrEditLabel": "Create or edit a Compliance"
+            },
+            "created": "A new Compliance is created with identifier {{ param }}",
+            "updated": "A Compliance is updated with identifier {{ param }}",
+            "deleted": "A Compliance is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Compliance {{ id }}?"
+            },
+            "detail": {
+                "title": "Compliance"
+            },
+            "code": "Code",
+            "descriptionAr": "Description Ar",
+            "descriptionEn": "Description En",
+            "complianceVersion": "Compliance Version",
+            "version": "Version",
+            "createdDate": "Created Date",
+            "createdBy": "Created By",
+            "modifiedDate": "Modified Date",
+            "modifiedBy": "Modified By",
+            "values": "Values",
+            "control": "Control",
+            "complianceFlag": "Compliance Flag"
+        }
+    }
+}

@@ -1,0 +1,30 @@
+
+{
+    "assessorApp": {
+        "assessmentSchedule" : {
+            "home": {
+                "title": "Assessment Schedules",
+                "createLabel": "Create a new Assessment Schedule",
+                "createOrEditLabel": "Create or edit a Assessment Schedule"
+            },
+            "created": "A new Assessment Schedule is created with identifier {{ param }}",
+            "updated": "A Assessment Schedule is updated with identifier {{ param }}",
+            "deleted": "A Assessment Schedule is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Assessment Schedule {{ id }}?"
+            },
+            "detail": {
+                "title": "Assessment Schedule"
+            },
+            "fromDate": "From Date",
+            "toDate": "To Date",
+            "descriptionAr": "Description Ar",
+            "descriptionEn": "Description En",
+            "createdDate": "Created Date",
+            "createdBy": "Created By",
+            "modifiedDate": "Modified Date",
+            "modifiedBy": "Modified By",
+            "schedules": "Schedules"
+        }
+    }
+}
